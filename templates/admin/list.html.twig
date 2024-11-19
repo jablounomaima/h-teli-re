@@ -1,0 +1,22 @@
+<!-- list.html.twig -->
+<table>
+    <thead>
+    <tr>
+
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in listeA %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.mail }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

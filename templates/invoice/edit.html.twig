@@ -1,0 +1,17 @@
+{# templates/invoice/edit.html.twig #}
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des factures{% endblock %}
+
+{% block body %}
+<h1>Modifier la facture</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<button type="submit">Sauvegarder</button>
+{{ form_end(form) }}
+
+<a href="{{ path('invoice_index') }}">Retour à la liste</a>
+{% endblock %}

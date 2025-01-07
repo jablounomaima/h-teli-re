@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Symfony{% endblock %}</title>
+
+    <!-- Lien vers Bootstrap pour un design rapide -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* Personnalisation des couleurs */
+        body {
+            background-color: #f4f6f9; /* Couleur de fond de la page */
+            color: #333;
+        }
+
+        h1 {
+            color: #007bff; /* Titre bleu */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: #4CAF50; /* Couleur verte pour la navbar */
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important; /* Texte de la navbar en blanc */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ff9800 !important; /* Couleur du texte de la navbar au survol */
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background-color: #28a745; /* Bouton vert */
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #218838; /* Bouton vert foncé au survol */
+        }
+
+        footer {
+            background-color: #222; /* Pied de page sombre */
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .btn-danger {
+            background-color: #f44336; /* Bouton rouge pour la suppression */
+        }
+
+        .btn-danger:hover {
+            background-color: #d32f2f; /* Bouton rouge foncé au survol */
+        }
+    </style>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+<!-- Barre de navigation -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="{{ path('invoice_index') }}">Mon Application</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('invoice_index') }}">Factures</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('invoice_new') }}">Nouvelle Facture</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Contenu principal -->
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; {{ "now"|date("Y") }} Mon Application Symfony</p>
+</footer>
+
+<!-- Scripts JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

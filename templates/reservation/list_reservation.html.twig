@@ -1,0 +1,57 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des reservation{% endblock %}
+
+
+
+
+{% block body %}
+    <h1 class="my-4">Liste des Réservations</h1>
+
+    <!-- Affichage des messages flash -->
+    {% for message in app.flashes('info') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <!-- Vérification s'il y a des réservations -->
+    {% if reservations is not empty %}
+        <table border="2" class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Date d'arrivée</th>
+                <th>Date de départ</th>
+                <th>Statut</th>
+                <th>Client</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.id }}</td>
+                    <td>{{ reservation.checkInDate|date('d/m/Y H:i') }}</td>
+                    <td>{{ reservation.checkOutDate|date('d/m/Y H:i') }}</td>
+                    <td>{{ reservation.satuts }}</td>
+                    <td>{{ reservation.client ? reservation.client.name : 'Non spécifié' }}</td>
+                    <td>
+
+
+                        <a href="{{ path('reservation_edit', { id: reservation.id }) }}" class="btn btn-warning btn-sm">Modifier</a>
+
+
+                        <a href="{{ path('reservation_delete', { id: reservation.id }) }}" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette réservation ?')">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('reservation_new') }}" class="btn btn-secondary">ajouter reservation</a>
+    {% else %}
+        <p class="text-center">Aucune réservation disponible pour le moment.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des factures{% endblock %}
+
+{% block body %}
+    <h1>Liste des factures</h1>
+
+    <table border="2">
+        <thead>
+        <tr>
+            <th>Montant</th>
+            <th>Devise</th>
+            <th>Statut de paiement</th>
+            <th>Date de création</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.amount }}</td>
+                <td>{{ invoice.currency }}</td>
+                <td>{{ invoice.paymentStatus }}</td>
+                <td>{{ invoice.createDate|date('Y-m-d H:i') }}</td>
+                <td>
+                    <a href="{{ path('invoice_edit', {id: invoice.id}) }}">Modifier</a>
+                    <a href="{{ path('invoice_delete', {id: invoice.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette facture ?')">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('invoice_new') }}">Ajouter une nouvelle facture</a>
+{% endblock %}

@@ -1,0 +1,32 @@
+
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Update Reservation{% endblock %}
+
+
+
+{% block body %}
+<h1>Update Reservation</h1>
+
+{# Affichage des erreurs globales du formulaire, s'il y en a #}
+{% if form_errors(form) %}
+    <div class="errors">
+        {{ form_errors(form) }}
+    </div>
+{% endif %}
+
+{# Formulaire d'édition #}
+<form method="post">
+
+
+    {# Affichage des champs du formulaire, y compris le champ statuts #}
+    {{ form_widget(form) }}
+
+    {# Bouton de soumission du formulaire #}
+    <button type="submit">Update Reservation</button>
+
+
+</form>
+{% endblock %}

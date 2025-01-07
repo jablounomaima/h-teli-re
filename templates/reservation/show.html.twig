@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la réservation{% endblock %}
+
+{% block body %}
+    <h1>Détails de la réservation</h1>
+
+    <p><strong>ID :</strong> {{ reservation.id }}</p>
+    <p><strong>Date d'arrivée :</strong> {{ reservation.checkInDate|date('d/m/Y H:i') }}</p>
+    <p><strong>Date de départ :</strong> {{ reservation.checkOutDate|date('d/m/Y H:i') }}</p>
+    <p><strong>Statut :</strong> {{ reservation.satuts }}</p>
+    <p><strong>Client :</strong> {{ reservation.client ? reservation.client.name : 'Non spécifié' }}</p>
+
+    <a href="{{ path('reservation_list') }}" class="btn btn-primary">Retour à la liste</a>
+{% endblock %}
